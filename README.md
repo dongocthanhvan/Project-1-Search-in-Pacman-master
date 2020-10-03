@@ -1,58 +1,14 @@
-Project : http://ai.berkeley.edu/search.html
+# CS188x_1-Artificial-Intelligence-Berkeley
+Project solutions for CS188 Artificial Intelligence course
 
-#### Provisional grades
-------------------
+Question 1 (3 points): Finding a Fixed Food Dot using Depth First Search
+Trong bài tập này ta dùng stack- hoạt động theo nguyên lý LIFO (Last in First out). Đưa điểm bắt đầu vào Stack .Nếu trạng thái được duyệt qua thì ta bỏ qua trạng thái này duyệt trạng thái tiếp theo, nếu chưa được duyệt qua thì thêm trạng thái vào visited. Nếu Stack rỗng, tìm kiếm kết thúc. Từ quá trình chạy cho đến khi về đích, ta đều lưu các action của từng state trong stack. Khi về đích( trạng thái kết thúc), sẽ trả về tất cả hành động dẫn đến trạng thái đó và kết thúc. Nếu chưa kết thúc, ta dùng hàm getSuccessors để tìm trạng tháitiếp theo rồi đưa vào stack tiếp theo.Ngoài ra ta còn tạo ra 1 list khác để lưu các vị trí đã được duyệt.
 
-Question q1: 3/3
+Question 2 (3 points): Breadth First Search
+ Trong bài tập này ta dùng Queue - hoạt động theo nguyên lý FIFO (First in First out). Đưa điểm bắt đầu vào Queue. Nếu trạng thái được duyệt qua thì ta bỏ qua trạng thái này, nếu chưa được duyệt qua thì thêm trạng thái vào visited .Nếu queue rỗng, tìm kiếm kết thúc. Từ quá trình chạy cho đến khi về đích, ta đều lưu các action của từng state trong queue. Khi về đích( trạng thái kết thúc), sẽ trả về tất cả hành động dẫn đến trạng thái đó và kết thúc. Nếu chưa kết thúc, ta dùng hàm getSuccessors để tìm trạng thái tiếp theo rồi đưa vào queue tiếp theo.Ngoài ra ta còn tạo ra 1 list khác để lưu các vị trí đã được duyệt.
+ 
+Question 3 (3 points): Varying the Cost Function
+Tương tự câu 1, 2 nhưng sẽ dùng Priority Queue và có thêm  độ ưu tiên được xác định bằng tổng giá trị các bước để về đích, ưu tiên sẽ được xếp đầu hàng đợi nếu tổng giá trị nhỏ hơn. Nếu Priority Queue rỗng, tìm kiếm kết thúc. Đưa điểm bắt đầu vào Queue. Nếu trạng thái được duyệt qua thì ta bỏ qua trạng thái này, nếu chưa được duyệt qua thì thêm trạng thái vào visited. Khi về đích( trạng thái kết thúc), sẽ trả về tất cả hành động dẫn đến trạng thái đó và kết thúc. Nếu chưa kết thúc, ta dùng hàm getSuccessors để tìm trạng thái tiếp theo rồi đưa vào queue tiếp theo.
 
-Question q2: 3/3
-
-Question q3: 3/3
-
-Question q4: 3/3
-
-Question q5: 3/3
-
-Question q6: 3/3
-
-Question q7: 2/4
-
-Question q8: 3/3
-
-------------------
-Total: 23/25
-
-### BFS,DFS,UCS,A*
-The above algorithms are implemented so they pass the autograder.py.
-
-So the idea is to check the node if has been visited before.Then you push it to
-visited list and check if we reached goalState - if not expand children based on algorithm.
-
-**Code is fully explained in comments.**
-
-
-### Problem 5
-I changed my first-implementation of BFS to the one I used for ucs/a* so I can calculate the
-number of corners I have visited.
-
-### Problem 6
-In this problem the function of manhattanDistance() from util.py has been used.
-First @cornersHeuristic we check which corners are left to visit and then we calculate
-the currentpoint to each corner respectively - all written efficiently and cleanly in a 
-single line of code :: 
-*min([(util.manhattanDistance(curPoint, corner), corner) for corner in cornersLeftToVisit])*
-
-### Problem 7
-There are 2 implementations.
-
-First one is an oneliner that gets 2/4 on autograder and returns the length of the foodGrid.In that way
-each food-node gets an additional cost of how many foods are left. *12517 nodes in ~9sec*
-
-Second and faster implementation uses manhattanDistance to calculate the distance between each food
-and pacman distance.(This one fails autograder.py) *6126 nodes in 3sec*
-### Problem 8
-Worked as problem 6.There is no difference between bfs,ucs,astar as far as path cost is concerned.
-######NOTE : The old DFS gave a path cost of 514 but the new one that passes the autograder gives a very expensive path of 5324 cost. 
-
-
-
+Question 4 (3 points): A* search
+Tương tự uniformCostSearch nhưng thêm heuristic là khoảng cách từ điểm đó đến đích, khoảng cách ngắn hơn thì được ưu tiên lên đầu hàng đợi. Điểm bắt đầu tại PriorityQueue . Nếu PriorityQueue rỗng kết thúc tìm kiếm. Khi về đích( trạng thái kết thúc), sẽ trả về tất cả hành động dẫn đến trạng thái đó và kết thúc. Nếu chưa kết thúc, ta dùng hàm getSuccessors để tìm trạng thái tiếp theo rồi đưa vào queue tiếp theo.
